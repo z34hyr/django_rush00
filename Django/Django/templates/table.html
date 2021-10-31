@@ -1,0 +1,14 @@
+{% extends "worldmap.html" %}
+{% block table %}
+
+<table id="gamefield">
+{% for row in rows %}
+
+<tr style="width:30px;height: 30px;border: 1px solid black;">
+	{% for cell in row %}
+	<td style="background-color: {{ cell }};width:30px;border: 1px solid black"></td>
+	{% endfor %}
+</tr>
+{% endfor %}
+</table>
+{% endblock table %}

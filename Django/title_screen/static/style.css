@@ -1,0 +1,21 @@
+html, body {
+    height: 100%;
+}
+
+html {
+    margin: auto;
+}
+
+body {
+    vertical-align: middle;
+}
+table {
+	font-size: x-small;
+	border-collapse: collapse;
+	border: 2px solid black;
+	margin: 5px;
+}
+table td {
+	
+	width: 60px
+}

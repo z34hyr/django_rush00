@@ -1,0 +1,18 @@
+
+table {
+	font-size: x-small;
+	border-collapse: collapse;
+	border: 2px solid black;
+	margin: 5px;
+}
+table td {
+	width: 60px;
+}
+input {
+	width: 100%;
+	background-color: blue;
+}
+
+table #gamefield {
+	border: 2px;
+}

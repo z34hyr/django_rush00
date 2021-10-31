@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% load static %}
+{% block buttons %}
+	
+	<!--кнопки сделаны внутри таблицы
+	Соотв. много пустых ячеек-->
+	<table>
+		<tr>
+			<td><!--пустая ячейка--></td>
+			<td>
+				<form action="/{{ curr_page }}/" method="post" >
+					{% csrf_token %}
+					<input type="submit"
+						name="key"
+						id="upKey"
+						value="up"
+						style="height:60px;width:60px;margin-right: 0px;">
+				</form>
+			</td>
+			<td><!--пустая ячейка--></td>
+		</tr>
+		<tr>
+			<td>
+				<form action="/{{ curr_page }}/" method="post" >
+					{% csrf_token %}
+					<input type="submit"
+						name="key"
+						id="leftKey"
+						value="left"
+						style="height:60px;width:60px;margin-right: 0px;">
+				</form>
+			</td>
+			<td><!--пустая ячейка--></td>
+			<td>
+				<form action="/{{ curr_page }}/" method="post" >
+					{% csrf_token %}
+					<input type="submit"
+						name="key"
+						id="rightKey"
+						value="right"
+						style="height:60px;width:60px;margin-right: 0px;">
+				</form>
+			</td>
+			<td><!--пустая ячейка--></td>
+			<td>
+				<form action="/{{ curr_page }}/" method="post" >
+					{% csrf_token %}
+					<input type="submit"
+						name="key"
+						id="selectKey"
+						value="select"
+						style="height:60px;width:60px;margin-right: 0px;">
+				</form>
+			</td>
+			<td>
+				<form action="/{{ curr_page }}/" method="post" >
+					{% csrf_token %}
+					<input type="submit"
+						name="key"
+						id="startKey"
+						value="start"
+						style="height:60px;width:60px;margin-right: 0px;">
+				</form>
+			</td>
+			<td><!--пустая ячейка--></td>
+			<td>
+				<form action="/{{ curr_page }}/" method="post" >
+					{% csrf_token %}
+					<input type="submit"
+						name="key"
+						id="bKey"
+						value="b"
+						style="height:60px;width:60px;margin-right: 0px;">
+				</form>
+			</td>
+			<td>
+				<form action="/{{ curr_page }}/" method="post" >
+					{% csrf_token %}
+					<input type="submit"
+						name="key"
+						id="aKey"
+						value="a"
+						style="height:60px;width:60px;margin-right: 0px;">
+				</form>
+			</td>
+		</tr>
+		<tr>
+			<td><!--пустая ячейка--></td>
+			<td>
+				<form action="/{{ curr_page }}/" method="post" >
+					{% csrf_token %}
+					<input type="submit"
+						name="key"
+						id="downKey"
+						value="down"
+						style="height:60px;width:60px;margin-right: 0px;">
+				</form>
+			</td>
+			<td><!--пустая ячейка--></td>
+		</tr>
+	</table>
+	<script>
+		var input = document.getElementById("anyInput");
+		var key_dict = {37: "leftKey",
+						39: "rightKey",
+						40: "downKey",
+						38: "upKey",
+						65: "leftKey", //d
+						68: "rightKey", //a
+						83: "downKey", //s
+						87: "upKey", //w
+						219: "bKey",
+						221: "aKey",
+						13: "startKey",
+						16: "selectKey"};
+		// Execute a function when the user releases a key on the keyboard
+		input.addEventListener("keyup", function(event) {
+			var key = event.keyCode;
+			if (key_dict.hasOwnProperty(key)) {
+				event.preventDefault();
+				document.getElementById(key_dict[key]).click();
+			}
+		});
+	</script>
+
+{% endblock buttons %}
