@@ -59,18 +59,23 @@ class WorldMapView(TemplateView):
 	def page(request):
 		print(request)
 		global gamer
+		
 		print("BALLS:", gamer.total_balls)
+		page = "table.html"
+		z = "worldmap"
 		if request.method == 'POST':
 			# если POST - значит нажатие на кнопку
 			key = request.POST.get("key")
 			if key in {"up": [-1, 0], "down": [1, 0], "left": [0, -1], "right": [0, 1]}:
 				gamer.move_hero(key)
-
-		return render(request, 'table.html',
+			if key == "a":
+				page = "title_screen.html"
+				z = "title_screen"
+		return render(request, page,
 		{
 			'page_title': "Main page",
 			'header': "Main page",
-			'curr_page': "worldmap",
+			'curr_page': z,
 			'rows': gamer.field
 		})
 

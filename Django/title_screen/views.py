@@ -1,5 +1,6 @@
 from django.views.generic import TemplateView
 from django.shortcuts import render
+from worldmap.views import gamer
 
 class Gamer:
 	"""класс про игрока"""
@@ -14,28 +15,23 @@ class TitlePageView(TemplateView):
 
 	def page(request):
 		print(request)
-		return render(request, 'title_screen.html', 
+		page = "title_screen.html"
+		z = "title_screen"
+		if request.method == 'POST':
+			# если POST - значит нажатие на кнопку
+			key = request.POST.get("key")
+			if key == "a":
+				page = "table.html"
+				z = "worldmap"
+			else:
+				page = "title_screen.html"
+				z = "title_screen"
+		return render(request, page, 
 		{
 			'page_title': "Main page",
 			'header': "Main page",
-			'my_ref': "https://profile.intra.42.fr/",
-			'left_key_act': "",
-			'left_key_ref': "",
-			'right_key_act': "",
-			'right_key_ref': "",
-			'up_key_act': "",
-			'up_key_ref': "",
-			'down_key_act': "",
-			'down_key_ref': "",
-			'select_key_act': "",
-			'select_key_ref': "",
-			'start_key_act': "",
-			'start_key_ref': "",
-			'a_key_act': "href=",
-			'a_key_ref': "/worldmap",
-			'b_key_act': "href=",
-			'b_key_ref': "/load",
-			'curr_page': "title_screen",
+			'curr_page': z,
+			'rows': gamer.field
 		})
 
 #URL -> View -> Model (typically) -> Template
